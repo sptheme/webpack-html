@@ -1,14 +1,18 @@
 {
-  "name": "webpack-tuts",
+  "name": "webpack-html",
   "version": "1.0.0",
-  "description": "A full tutorial of Webpack 2",
+  "description": "Starter Frontend Dev and UX Designer working with Webpack",
   "main": "index.js",
   "scripts": {
     "build": "set NODE_ENV=production&& webpack",
     "dev": "set NODE_ENV=development&& node dev.server.js"
   },
-  "keywords": [],
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sptheme/webpack-html.git"
+  },
+  "keywords": ["webpack", "html", "css", "starter"],
+  "author": "Sopheak Peas",
   "license": "ISC",
   "devDependencies": {
     "babel-core": "^6.18.2",
