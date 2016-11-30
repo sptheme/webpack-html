@@ -11,7 +11,12 @@
     "type": "git",
     "url": "git+https://github.com/sptheme/webpack-html.git"
   },
-  "keywords": ["webpack", "html", "css", "starter"],
+  "keywords": [
+    "webpack",
+    "html",
+    "css",
+    "starter"
+  ],
   "author": "Sopheak Peas",
   "license": "ISC",
   "devDependencies": {
