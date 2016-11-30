@@ -36,8 +36,13 @@ var cssLoader = PRODUCTION
 	: 	['style-loader', 'css-loader'];
 
 module.exports = {
-	devtool: 'source-map',
+	devtool: 'cheap-eval-source-map',
 	entry: entry,
+	output: {
+		path: path.resolve(__dirname, "public/js/"), // the target directory for all output files
+		publicPath: PRODUCTION ? '/' : '/js/', // the url to the output directory resolved relative to the HTML page
+		filename: PRODUCTION ? 'theme.min.js' : 'theme.js'
+	},
 	plugins: plugins,
 	externals: {
 		jquery: 'jQuery' //jquery is external and available at the global variable jQuery
@@ -56,10 +61,5 @@ module.exports = {
 			loaders: cssLoader,
 			exclude: /node_modules/
 		}]
-	},
-	output: {
-		path: path.join(__dirname, 'public/js'),
-		publicPath: PRODUCTION ? '/' : '/public/js/',
-		filename: PRODUCTION ? 'theme.min.js' : 'theme.js'
-	}
+	}	
 }

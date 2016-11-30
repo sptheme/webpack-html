@@ -7,11 +7,12 @@ var compiler = webpack(config);
 var server = new WebpackDevServer(compiler, {
 	hot: true,
 	filename: config.output.filename,
+	contentBase: path.join(__dirname, "public"), //Tell the server where to serve content from
 	publicPath: config.output.publicPath,
 	stats:{
 		colors: true
 	}
 });
 server.listen(8080, 'localhost', function() {
-	console.log("Listening on port 8080!");
+	console.log("=> Listening on port 8080!");
 });
