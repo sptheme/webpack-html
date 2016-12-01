@@ -4,7 +4,7 @@
   "description": "Starter Frontend Dev and UX Designer working with Webpack",
   "main": "index.js",
   "scripts": {
-    "build": "set NODE_ENV=production&& webpack",
+    "build": "set NODE_ENV=production&& webpack --config webpack.pro.config.js",
     "dev": "set NODE_ENV=development&& node dev.server.js"
   },
   "repository": {

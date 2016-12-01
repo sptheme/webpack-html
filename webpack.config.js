@@ -27,7 +27,7 @@ plugins.push(
 		DEVELOPMENT: JSON.stringify(DEVELOPMENT),
 		PRODUCTION: JSON.stringify(PRODUCTION)
 	})
-);	
+);
 
 var cssLoader = PRODUCTION
 	?	ExtractTextPlugin.extract({
@@ -61,5 +61,5 @@ module.exports = {
 			loaders: cssLoader,
 			exclude: /node_modules/
 		}]
-	}	
+	}
 }
