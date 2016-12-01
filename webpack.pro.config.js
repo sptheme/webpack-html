@@ -14,7 +14,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "public/js/"), // the target directory for all output files
     publicPath: '/js/', // the url to the output directory resolved relative to the HTML page
-    filename: '[name].js'
+    filename: '[name].min.js'
   },
   plugins: [
     new webpack.optimize.UglifyJsPlugin(),
