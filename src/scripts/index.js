@@ -10,7 +10,6 @@ $(function() {
   console.log('Webpack 2.0 Ready!');
 });
 
-
 if (DEVELOPMENT) {
 	if (module.hot) {
 		module.hot.accept();
