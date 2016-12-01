@@ -1,7 +1,7 @@
 var path = require('path');
 var webpack = require('webpack');
 
-var DEVELOPMENT = process.env.NODE_ENV === 'development';
+var DEVELOPMENT = process.env.NODE_ENV === 'development'; // injecting your Node.js environment
 
 module.exports = {
   devtool: 'cheap-eval-source-map',
