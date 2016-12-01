@@ -1,12 +1,13 @@
 var path = require('path');
 var webpack = require('webpack');
 
-var DEVELOPMENT = process.env.NODE_ENV === 'development'; // injecting your Node.js environment
+var PRODUCTION = process.env.NODE_ENV === 'production'; // injecting your Node.js environment
+var DEVELOPMENT = process.env.NODE_ENV === 'development';
 
 module.exports = {
   devtool: 'cheap-eval-source-map',
   entry: {
-    vendor: ['jquery', 'tether'],
+    vendor: ['tether'],
     theme:[
       './src/scripts/index.js',
       'webpack/hot/dev-server',
@@ -21,7 +22,12 @@ module.exports = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
+    new webpack.ProvidePlugin({
+      $: "jquery",
+      jQuery: "jquery"
+    }),
     new webpack.DefinePlugin({
+      PRODUCTION: JSON.stringify(PRODUCTION),
       DEVELOPMENT: JSON.stringify(DEVELOPMENT)
     })
   ],

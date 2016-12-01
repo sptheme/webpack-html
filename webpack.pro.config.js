@@ -3,11 +3,12 @@ var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 var PRODUCTION = process.env.NODE_ENV === 'production'; // injecting your Node.js environment
+var DEVELOPMENT = process.env.NODE_ENV === 'development';
 
 module.exports = {
   devtool: 'cheap-eval-source-map',
   entry: {
-    vendor: ['jquery', 'tether'],
+    vendor: ['tether'],
     theme: './src/scripts/index.js'
   },
   output: {
@@ -18,8 +19,13 @@ module.exports = {
   plugins: [
     new webpack.optimize.UglifyJsPlugin(),
     new ExtractTextPlugin({ filename: '../css/style.min.css', allChunks: true }),
+    new webpack.ProvidePlugin({
+      $: "jquery",
+      jQuery: "jquery"
+    }),
     new webpack.DefinePlugin({
-      PRODUCTION: JSON.stringify(PRODUCTION)
+      PRODUCTION: JSON.stringify(PRODUCTION),
+      DEVELOPMENT: JSON.stringify(DEVELOPMENT)
     })
   ],
   module: {
