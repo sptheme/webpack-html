@@ -35,8 +35,16 @@ module.exports = {
       exclude: /node_modules/
     }, {
       test: /\.css$/,
-      loaders: 'css-loader?minimize',
+      loaders: ExtractTextPlugin.extract({
+        fallbackLoader: 'style-loader', loader: 'css-loader?minimize'
+      }),
       exclude: /node_modules/
+    }, {
+      test: /\.s(a|c)ss$/,
+      loaders: ExtractTextPlugin.extract({
+        fallbackLoader: 'style-loader', loader: 'css-loader!sass-loader',
+      }),
+      include: path.resolve(__dirname, "src/styles/")
     }]
   }
 }

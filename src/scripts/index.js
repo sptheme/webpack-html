@@ -1,4 +1,4 @@
-require('../styles/theme.css');
+require('../styles/theme.scss');
 var messages = require('./messages');
 
 var app = document.getElementById('app');
