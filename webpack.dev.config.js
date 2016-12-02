@@ -5,24 +5,27 @@ var PRODUCTION = process.env.NODE_ENV === 'production'; // injecting your Node.j
 var DEVELOPMENT = process.env.NODE_ENV === 'development';
 
 module.exports = {
-  devtool: 'cheap-eval-source-map',
-  entry: [
-    'tether',
-    './src/scripts/index.js',
-    'webpack/hot/dev-server',
-    'webpack-dev-server/client?http://localhost:8080'
-  ],
+  devtool: '#cheap-module-eval-source-map',
+  entry: {
+    vendor: ['tether','bootstrap'],
+    theme: [
+      './src/scripts/index.js',
+      'webpack/hot/dev-server',
+      'webpack-dev-server/client?http://localhost:8080'
+    ]
+  },
   output: {
     path: path.resolve(__dirname, "public/js/"), // the target directory for all output files
     publicPath: '/js/', // the url to the output directory resolved relative to the HTML page
-    filename: 'theme.min.js'
+    filename: '[name].min.js'
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
     new webpack.ProvidePlugin({
       $: 'jquery',
-      jQuery: 'jquery'
+      jQuery: 'jquery',
+      'window.Tether': 'tether'
     }),
     new webpack.DefinePlugin({
       PRODUCTION: JSON.stringify(PRODUCTION),

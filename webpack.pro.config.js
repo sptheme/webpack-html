@@ -6,9 +6,8 @@ var PRODUCTION = process.env.NODE_ENV === 'production'; // injecting your Node.j
 var DEVELOPMENT = process.env.NODE_ENV === 'development';
 
 module.exports = {
-  devtool: 'cheap-eval-source-map',
   entry: {
-    vendor: ['tether'],
+    vendor: ['tether', 'bootstrap'],
     theme: './src/scripts/index.js'
   },
   output: {
@@ -20,8 +19,9 @@ module.exports = {
     new webpack.optimize.UglifyJsPlugin(),
     new ExtractTextPlugin({ filename: '../css/style.min.css', allChunks: true }),
     new webpack.ProvidePlugin({
-      $: "jquery",
-      jQuery: "jquery"
+      $: 'jquery',
+      jQuery: 'jquery',
+      'window.Tether': 'tether'
     }),
     new webpack.DefinePlugin({
       PRODUCTION: JSON.stringify(PRODUCTION),
@@ -42,7 +42,7 @@ module.exports = {
     }, {
       test: /\.s(a|c)ss$/,
       loaders: ExtractTextPlugin.extract({
-        fallbackLoader: 'style-loader', loader: 'css-loader!sass-loader',
+        fallbackLoader: 'style-loader', loader: 'css-loader?minimize!sass-loader',
       }),
       include: path.resolve(__dirname, "src/styles/")
     }]
